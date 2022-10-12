@@ -30,6 +30,7 @@ class Web_Server{
  * @param size 
  */
 Web_Server::Web_Server(int size){
+  //  cout<<"web server_constructor"<<endl;
     server_size = size;
     server = new Request[size];
 }

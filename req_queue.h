@@ -21,6 +21,7 @@ public:
  * 
  */
 Req_Queue::Req_Queue(int servers){
+    cout<<"req queue constructor"<<endl;
     int find_max_time = -1;
     size = 2*servers;
     for(int i=0; i<size; i++){
@@ -31,6 +32,7 @@ Req_Queue::Req_Queue(int servers){
         }
     }
     max_time = find_max_time;
+    cout<<"Print annything"<<endl;
 }
 
 Req_Queue::Req_Queue(){
