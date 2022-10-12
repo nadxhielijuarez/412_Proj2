@@ -26,16 +26,13 @@ Load_Balancer::Load_Balancer(Req_Queue queue, Web_Server server, int time){
 
 void Load_Balancer::allocate_requests(){
     int indx = 0;
-    for(int queue_req = 0; queue_req < time_to_run; queue_req++){
+    for(int clock_cycle = 0; clock_cycle < time_to_run; clock_cycle++){
+        myserver.process_requests();
         if(!myqueue.empty()){
             Request new_request = myqueue.pop();
-
-            if(new_request.time > myqueue.max_time){
-                myqueue.max_time = new_request.time;
-            }
-            indx = myserver.process_requests(new_request, myqueue.max_time, indx);            
-        }
-        else{
+            cout<<"At clock cycle "<<clock_cycle;
+            myserver.take_in_Request(new_request);
+        }else{
             /*should I create a new queue and continue to process that?*/
             cout<<"All requests processed."<<endl;
             break;
@@ -43,5 +40,6 @@ void Load_Balancer::allocate_requests(){
 
     }
 }
+
 
 #endif /* MY_CLASS_H */

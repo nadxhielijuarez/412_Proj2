@@ -2,7 +2,6 @@
 #define Request_H 
 
 #include <iostream>
-#include <iostream>
 
 using namespace std;
 class Request{
@@ -12,7 +11,7 @@ public:
     int time;
 
     Request();
-    
+    Request(string in_IP, string out_IP, int time);
     string generate_num_for_IP();
     string Generate_IP();
     int generate_time();

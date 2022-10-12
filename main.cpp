@@ -28,6 +28,7 @@ int main(){
    Load_Balancer myLB(myQ, myServer, lb_time);
    cout<<"\n Beginning to allocate requests"<<endl;
    myLB.allocate_requests();
+   //myLB.decrementing_allocate();
 
 }
 /*

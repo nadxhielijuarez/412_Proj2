@@ -24,6 +24,7 @@ public:
 Req_Queue::Req_Queue(int servers){
     int find_max_time = -1;
     size = 2*servers;
+    cout<<"size of queue is: "<<size<<endl;
     for(int i=0; i<size; i++){
         Request newRequest;
         requests.push(newRequest);

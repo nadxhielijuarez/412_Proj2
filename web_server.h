@@ -1,6 +1,7 @@
 #ifndef WEB_SERVER_H // include guard
 #define  WEB_SERVER_H
 #include "request.h"
+#include "processor.h"
 #include <iostream>
 using namespace std;
 /*
@@ -16,11 +17,15 @@ request inside server just deletes when time is over
  */
 class Web_Server{
     int server_size;
-    Request* server;/*should point to the array of that size*/
+    //Request* server;/*should point to the array of that size*/
+    Processor* server;
     public:
     Web_Server(int size);
     Web_Server();
-    int process_requests(Request newRequest,  int max_req_time, int starting_index);
+    //int process_requests(Request newRequest,  int max_req_time, int starting_index);
+    void process_requests();
+    void take_in_Request(Request newRequest);
+    int get_empty_indx();
 
 };
 /**
@@ -29,9 +34,10 @@ class Web_Server{
  * @param size 
  */
 Web_Server::Web_Server(int size){
-  //  cout<<"web server_constructor"<<endl;
     server_size = size;
-    server = new Request[size];
+   for(int i=0; i<size; i++){
+    server[i] = Processor(i);
+   }
 }
 
 Web_Server::Web_Server(){
@@ -39,28 +45,37 @@ Web_Server::Web_Server(){
     server = NULL;
 }
 
-/**
- * @brief Servers to process all 
- * 
- * @param newRequest 
- * @param max_size 
- * @param starting_index 
- * @return int 
- */
-int Web_Server::process_requests(Request newRequest, int max_size, int starting_index){
-    int processed_index = 0;
-    for(int time=starting_index; time<max_size; time++){
-        for(int indx=0; indx<server_size; indx++){
-            Request cur_request = server[indx];
-            if(cur_request.time == time){
-                processed_index = indx;
-                cout<<"Processed request: "<<cur_request.output_IP<<" begining "<<newRequest.input_IP <<endl;
-                server[indx] = newRequest; 
-                break;
+
+void Web_Server::process_requests(){
+    for(int indx=0; indx<server_size; indx++){
+        Processor cur_process= server[indx];
+        if(!cur_process.empty){
+            Request cur_request = cur_process.request_held;
+            cur_request.time--;
+            if(cur_request.time == 0){
+                cur_process.empty = true;
             }
+        }        
+    }
+}
+int Web_Server::get_empty_indx(){
+    int processed_index = 0;
+    for(int indx =0; indx<server_size; indx++){
+        Processor cur_processor = server[indx];
+        if(cur_processor.empty){
+            processed_index = indx;
+            break;
         }
     }
     return processed_index;
+}
+void Web_Server::take_in_Request(Request newRequest){
+    
+    int empty_slot_indx = get_empty_indx();
+    Processor cur_processor = server[empty_slot_indx];
+    Request old_Request = cur_processor.request_held;
+    cout<<"processor "<< cur_processor.name<<" processed "<<old_Request.output_IP <<" and beginning "<<newRequest.input_IP<<endl;
+    cur_processor.take_in_req(newRequest);
 }
 
 

@@ -1,6 +1,6 @@
 OBJS	= main.o
 SOURCE	= main.cpp
-HEADER	= req_queue.h request.h load_balancer.h web_server.h
+HEADER	= req_queue.h request.h load_balancer.h web_server.h processor.h
 OUT	= LB
 CC	 = g++
 FLAGS	 = -g -c -Wall
