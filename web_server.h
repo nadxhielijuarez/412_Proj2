@@ -1,5 +1,7 @@
 #ifndef MY_CLASS_H // include guard
 #define MY_CLASS_H
+
+#include "request.h"
 #include <iostream>
 using namespace std;
 /*
@@ -15,7 +17,11 @@ request inside server just deletes when time is over
  */
 class Web_Server{
     int emptyServer_indx;
-
+    int server_size;
+    Request[] *server;
+    Web_Server();
+    void fill_next_available_slot();
+    
 
 
 };
