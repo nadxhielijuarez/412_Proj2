@@ -1,21 +1,21 @@
-#ifndef MY_CLASS_H // include guard
-#define MY_CLASS_H
+#ifndef Request_H // include guard
+#define Request_H 
 
 #include <iostream>
 #include <iostream>
 
 using namespace std;
 class Request{
-
+public:
     string input_IP;
     string output_IP;
     int time;
 
     Request();
     
-    string generate_num_for_IP(){}
-    string Generate_IP(){}
-    int generate_time(){}
+    string generate_num_for_IP();
+    string Generate_IP();
+    int generate_time();
 
 };
 

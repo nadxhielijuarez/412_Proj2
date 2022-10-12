@@ -1,6 +1,6 @@
 #include <iostream>
-#ifndef MY_CLASS_H // include guard
-#define MY_CLASS_H
+#ifndef LOAD_BALANCER_H // include guard
+#define LOAD_BALANCER_H
 
 /*
 where the queue is used. 
