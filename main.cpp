@@ -1,6 +1,10 @@
 #include <iostream>
 
+using namespace std;
+int main(){
 
+    cout<<"Checking output"<<endl;
+}
 /*
 queue gets instantiated with server*2 random requests
 
