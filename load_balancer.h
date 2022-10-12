@@ -26,15 +26,21 @@ Load_Balancer::Load_Balancer(Req_Queue queue, Web_Server server, int time){
 
 void Load_Balancer::allocate_requests(){
     int indx = 0;
-    int queue_req = 0;
-    while(queue_req < time_to_run){
-        Request new_request = myqueue.pop();
-        if(new_request.time > myqueue.max_time){
-            myqueue.max_time = new_request.time;
+    for(int queue_req = 0; queue_req < time_to_run; queue_req++){
+        if(!myqueue.empty()){
+            Request new_request = myqueue.pop();
+
+            if(new_request.time > myqueue.max_time){
+                myqueue.max_time = new_request.time;
+            }
+            indx = myserver.process_requests(new_request, myqueue.max_time, indx);            
         }
-        indx = myserver.process_requests(new_request, myqueue.max_time, indx);
-        
-        queue_req++;
+        else{
+            /*should I create a new queue and continue to process that?*/
+            cout<<"All requests processed."<<endl;
+            break;
+        }
+
     }
 }
 

@@ -14,6 +14,7 @@ public:
     Req_Queue(int servers);
     Req_Queue();
     Request pop();
+    bool empty();
 };
 
 /**
@@ -42,6 +43,10 @@ Request Req_Queue::pop(){
     Request myReq = requests.front();
     requests.pop();
     return myReq;
+}
+
+bool Req_Queue::empty(){
+    return requests.empty();
 }
 
 #endif 
