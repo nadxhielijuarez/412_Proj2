@@ -1,13 +1,21 @@
 
 #ifndef MY_CLASS_H // include guard
 #define MY_CLASS_H
+#include <iostream>
+#include <queue>
+#include "request.h"
 
-#include <iostream>
-#include <iostream>
 using namespace std;
-class req_queue{
-    
-
+class Req_Queue{
+    Req_Queue();
 };
 
+/**
+ * @brief Might not need it
+ * 
+ */
+Req_Queue::Req_Queue(){
+    /*why is the class not being recognized?*/
+   //queue<request> g;
+}
 #endif 

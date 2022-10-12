@@ -12,6 +12,7 @@ class Request{
     int time;
 
     Request();
+    
     string generate_num_for_IP(){}
     string Generate_IP(){}
     int generate_time(){}
