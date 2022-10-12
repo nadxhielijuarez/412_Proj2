@@ -20,7 +20,6 @@ class Web_Server{
     public:
     Web_Server(int size);
     Web_Server();
-    ~Web_Server();
     int process_requests(Request newRequest,  int max_req_time, int starting_index);
 
 };
@@ -38,13 +37,6 @@ Web_Server::Web_Server(int size){
 Web_Server::Web_Server(){
     server_size = 0;
     server = NULL;
-}
-/**
- * @brief Destroy the Web_Server::Web_Server object Destructor
- * 
- */
-Web_Server::~Web_Server(){
-    delete [] server;
 }
 
 /**

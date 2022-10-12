@@ -25,9 +25,9 @@ int main(){
 
    Req_Queue myQ(servers);
    Web_Server myServer(servers);
-//    cout<<"1."<<endl;
-//    Load_Balancer myLB(myQ, myServer, lb_time);
-//    cout<<"2."<<endl;
+   Load_Balancer myLB(myQ, myServer, lb_time);
+   cout<<"\n Beginning to allocate requests"<<endl;
+   myLB.allocate_requests();
 
 }
 /*
