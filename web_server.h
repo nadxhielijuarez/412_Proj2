@@ -17,7 +17,9 @@ request inside server just deletes when time is over
 class Web_Server{
     int server_size;
     Request* server;/*should point to the array of that size*/
+    public:
     Web_Server(int size);
+    Web_Server();
     ~Web_Server();
     int process_requests(Request newRequest,  int max_req_time, int starting_index);
 
@@ -30,6 +32,11 @@ class Web_Server{
 Web_Server::Web_Server(int size){
     server_size = size;
     server = new Request[size];
+}
+
+Web_Server::Web_Server(){
+    server_size = 0;
+    server = NULL;
 }
 /**
  * @brief Destroy the Web_Server::Web_Server object Destructor
@@ -49,13 +56,13 @@ Web_Server::~Web_Server(){
  */
 int Web_Server::process_requests(Request newRequest, int max_size, int starting_index){
     int processed_index = 0;
-    for(int i=starting_index; i<max_size; i++){
-        for(int j=0; j<server_size; j++){
-            Request cur_request = server[j];
-            if(cur_request.time == i){
-                processed_index = i;
+    for(int time=starting_index; time<max_size; time++){
+        for(int indx=0; indx<server_size; indx++){
+            Request cur_request = server[indx];
+            if(cur_request.time == time){
+                processed_index = indx;
                 cout<<"Processed request: "<<cur_request.output_IP<<" begining "<<newRequest.input_IP <<endl;
-                server[j] = newRequest; 
+                server[indx] = newRequest; 
                 break;
             }
         }

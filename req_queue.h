@@ -1,16 +1,19 @@
 
-#ifndef MY_CLASS_H // include guard
-#define MY_CLASS_H
+#ifndef REQ_QUEUE_H // include guard
+#define REQ_QUEUE_H
 #include <iostream>
 #include <queue>
 #include "request.h"
 
 using namespace std;
 class Req_Queue{
-    Req_Queue(int servers);
+public:
     int max_time;
     int size;
     queue<Request> requests;
+    Req_Queue(int servers);
+    Req_Queue();
+    Request pop();
 };
 
 /**
@@ -29,4 +32,16 @@ Req_Queue::Req_Queue(int servers){
     }
     max_time = find_max_time;
 }
+
+Req_Queue::Req_Queue(){
+    max_time = -1;
+    size = 0;
+}
+
+Request Req_Queue::pop(){
+    Request myReq = requests.front();
+    requests.pop();
+    return myReq;
+}
+
 #endif 
