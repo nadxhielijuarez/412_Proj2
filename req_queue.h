@@ -10,10 +10,10 @@ class Req_Queue{
 public:
     int max_time;
     int size;
-    queue<Request> requests;
+    queue<Request*> requests;
     Req_Queue(int servers);
     Req_Queue();
-    Request pop();
+    Request* pop();
     bool empty();
 };
 
@@ -25,10 +25,10 @@ Req_Queue::Req_Queue(int servers){
     int find_max_time = -1;
     size = 2*servers;
     for(int i=0; i<size; i++){
-        Request newRequest;
+        Request* newRequest= new Request;
         requests.push(newRequest);
-        if(find_max_time< newRequest.time){
-            find_max_time = newRequest.time;
+        if(find_max_time< newRequest->time){
+            find_max_time = newRequest->time;
         }
     }
     max_time = find_max_time;
@@ -39,8 +39,8 @@ Req_Queue::Req_Queue(){
     size = 0;
 }
 
-Request Req_Queue::pop(){
-    Request myReq = requests.front();
+Request* Req_Queue::pop(){
+    Request* myReq = requests.front();
     requests.pop();
     size--;
     return myReq;

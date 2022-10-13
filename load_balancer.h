@@ -32,7 +32,7 @@ void Load_Balancer::allocate_requests(){
         int empty_processor = myserver.find_empty_processor();
         if(rand_req_time == 0 || rand_req_time==-1){
             if(!myqueue.empty()){
-                    Request newReq = myqueue.requests.front();
+                    Request* newReq = myqueue.requests.front();
                     if(empty_processor != -1 ){
                         myserver.take_in_request(newReq, empty_processor);
                         myqueue.pop();

@@ -24,8 +24,15 @@ int main(){
    cout<<"read in: "<<str_lb_time<<" load balancer time " <<endl;
 
    Req_Queue myQ(servers);
+
+//    cout<<"queue made: "<<endl;
+//    for(int i=0; i< servers;i++){
+//     Request* req = myQ.requests.front();
+//     cout<<"req: "<<req->input_IP<<endl;
+//     myQ.pop();
+//    }
    Web_Server myServer(servers);
-   Load_Balancer myLB(myQ, myServer, lb_time);
+  Load_Balancer myLB(myQ, myServer, lb_time);
 
 //    cout<<"checking server:"<<endl;
 
