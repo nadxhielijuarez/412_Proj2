@@ -72,7 +72,6 @@ void Web_Server::take_in_request(Request newRequest, int empty_slot_indx ){
     Processor*cur_processor = server[empty_slot_indx];
     Request old_Request = cur_processor->request_held;
     cur_processor->take_in_req(newRequest);
-    cout<<"Processor: "<< cur_processor->name <<" processed: "<<old_Request.input_IP<<" beginning: "<< cur_processor->request_held.input_IP<<endl; 
 }
 
 

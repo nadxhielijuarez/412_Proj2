@@ -49,9 +49,7 @@ string Request::Generate_IP(){
  * @return int a random time
  */
 int Request::generate_time(){
-    //clock cycles in microseconds, each int corresponds to a microsecond
-    // 1 hertz = 1 second
-    int micro_second = rand() % 1000000 + 0;
+    int micro_second = rand() % 5 + 1;
     return micro_second;
 }
 

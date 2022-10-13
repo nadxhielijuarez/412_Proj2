@@ -33,10 +33,11 @@ void Load_Balancer::allocate_requests(){
             if(!myqueue.empty()){
                     Request newReq = myqueue.requests.front();
                     if(empty_processor != -1 ){
-                        cout<<"At clock cycle: "<<clock_cycle<<" ";
+                        cout<<"At clock cycle: "<<clock_cycle<<" "<< myserver.server[empty_processor]->name << "  processed "<< myserver.server[empty_processor]->request_held.output_IP <<endl;
                         myserver.take_in_request(newReq, empty_processor);
                         myqueue.pop();
                     }
+                
             }                
         } else if(rand_req_time < 0){
             rand_req_time = 1 + rand() % 10;
