@@ -13,7 +13,7 @@ request inside server just deletes when time is over
 */
 
 /**
- * @brief THis is essentially a dynamic array
+ * @brief This is essentially a dynamic array
  * 
  */
 class Web_Server{
@@ -23,8 +23,8 @@ class Web_Server{
     Web_Server(int size);
     Web_Server();
     void process_requests();
-    void take_in_request(Request newRequest);
-    int get_empty_indx();
+    void take_in_request(Request newRequest, int empty_slot_indx);
+    int find_empty_processor();
 
 };
 /**
@@ -57,30 +57,22 @@ void Web_Server::process_requests(){
         }        
     }
 }
-int Web_Server::get_empty_indx(){
-   // cout<<"called get empty index"<<endl;
+int Web_Server::find_empty_processor(){
     int processed_index = -1;
     for(int indx =0; indx<server_size; indx++){
         Processor* cur_processor = server[indx];
         if(cur_processor->empty==1){
-            cout<<"at index "<<indx <<" server is "<<cur_processor->empty<<endl;
             processed_index = indx;
             break;
         } 
     }
     return processed_index;
 }
-void Web_Server::take_in_request(Request newRequest){
-    
-    int empty_slot_indx = get_empty_indx();
-    if(empty_slot_indx != -1){
-        Processor*cur_processor = server[empty_slot_indx];
-        Request old_Request = cur_processor->request_held;
-        cur_processor->take_in_req(newRequest);
-        cout<<"Old: "<<old_Request.input_IP<<" New "<< cur_processor->request_held.input_IP<<endl; 
-    }
-
-    
+void Web_Server::take_in_request(Request newRequest, int empty_slot_indx ){
+    Processor*cur_processor = server[empty_slot_indx];
+    Request old_Request = cur_processor->request_held;
+    cur_processor->take_in_req(newRequest);
+    cout<<"Processor: "<< cur_processor->name <<" processed: "<<old_Request.input_IP<<" beginning: "<< cur_processor->request_held.input_IP<<endl; 
 }
 
 
