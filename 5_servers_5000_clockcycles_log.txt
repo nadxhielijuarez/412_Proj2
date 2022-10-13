@@ -1,0 +1,20 @@
+Creating 5 servers. Setting the load balancer to run for: 0 clockcycles
+
+Beginning to allocate requests, requests time vary from 0-1000
+Starting queue size is: 10
+Ending queue size is: 10
+Creating 5 servers. Setting the load balancer to run for: 5000 clockcycles
+
+Beginning to allocate requests, requests time vary from 0-1000
+Starting queue size is: 10
+At clock cycle: 321 Processor: 1 processed: 167.32.6.122 was processed
+At clock cycle: 495 Processor: 3 processed: 71.147.142.111 was processed
+At clock cycle: 542 Processor: 0 processed: 99.21.46.187 was processed
+At clock cycle: 702 Processor: 2 processed: 150.136.236.245 was processed
+At clock cycle: 826 Processor: 1 processed: 89.107.96.13 was processed
+At clock cycle: 989 Processor: 4 processed: 81.243.137.151 was processed
+At clock cycle: 1227 Processor: 3 processed: 66.99.85.185 was processed
+At clock cycle: 1268 Processor: 1 processed: 106.69.10.167 was processed
+At clock cycle: 1307 Processor: 0 processed: 103.104.230.151 was processed
+At clock cycle: 1620 Processor: 2 processed: 99.34.194.85 was processed
+Ending queue size is: 0

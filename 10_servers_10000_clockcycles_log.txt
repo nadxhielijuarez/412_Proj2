@@ -1,0 +1,23 @@
+Beginning to allocate requests, requests time vary from 0-1000
+Starting queue size is: 20
+At clock cycle: 210 Processor: 5 processed: 74.132.62.24 was processed
+At clock cycle: 334 Processor: 3 processed: 6.47.27.39 was processed
+At clock cycle: 345 Processor: 5 processed: 63.131.83.85 was processed
+At clock cycle: 367 Processor: 6 processed: 179.243.2.11 was processed
+At clock cycle: 397 Processor: 0 processed: 248.106.219.62 was processed
+At clock cycle: 415 Processor: 0 processed: 69.142.223.62 was processed
+At clock cycle: 493 Processor: 8 processed: 102.201.169.206 was processed
+At clock cycle: 602 Processor: 4 processed: 19.215.52.194 was processed
+At clock cycle: 629 Processor: 9 processed: 209.42.177.44 was processed
+At clock cycle: 686 Processor: 7 processed: 106.60.160.236 was processed
+At clock cycle: 737 Processor: 0 processed: 207.88.96.231 was processed
+At clock cycle: 815 Processor: 5 processed: 236.115.140.183 was processed
+At clock cycle: 822 Processor: 6 processed: 22.81.207.66 was processed
+At clock cycle: 849 Processor: 2 processed: 71.218.188.238 was processed
+At clock cycle: 931 Processor: 1 processed: 201.33.53.83 was processed
+At clock cycle: 992 Processor: 7 processed: 188.218.77.160 was processed
+At clock cycle: 1027 Processor: 4 processed: 34.0.13.189 was processed
+At clock cycle: 1170 Processor: 8 processed: 200.166.154.104 was processed
+At clock cycle: 1239 Processor: 3 processed: 101.124.108.235 was processed
+At clock cycle: 1480 Processor: 9 processed: 227.222.82.44 was processed
+Ending queue size is: 0

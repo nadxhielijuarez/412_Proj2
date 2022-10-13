@@ -1,7 +1,4 @@
 #include <iostream>
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
 #include "web_server.h"
 #include "request.h"
@@ -27,19 +24,19 @@ int main(int argc, char *argv[]){
     while ((c = getopt (argc, argv, "s:t:")) != -1){
             switch (c){
                 case 's':
-                    servers = atoi (optarg);
+                    servers = stoi(optarg);
                     break;
                 case 't':
-                    lb_time = atoi (optarg);
-                // cout<<"read in m?"<<endl;
+                    lb_time = stoi(optarg);
                     break;
     }
-
-   Req_Queue myQ(servers);
-   Web_Server myServer(servers);
-   Load_Balancer myLB(myQ, myServer, lb_time);
-
-   cout<<"\n Beginning to allocate requests, requests time vary from 0-1000"<<endl;
-   myLB.allocate_requests();  
+    
+    cout<<"Creating "<< servers << " servers. Setting the load balancer to run for: "<< lb_time<< " clockcycles"<<endl;
+    Req_Queue myQ(servers);
+    Web_Server myServer(servers);
+    Load_Balancer myLB(myQ, myServer, lb_time);
+    
+    cout<<"\nBeginning to allocate requests, requests time vary from 0-1000"<<endl;
+    myLB.allocate_requests();  
     }
 }
