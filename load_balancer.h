@@ -25,6 +25,7 @@ Load_Balancer::Load_Balancer(Req_Queue queue, Web_Server server, int time){
 }
 
 void Load_Balancer::allocate_requests(){
+    cout<<"Starting queue size is: "<<myqueue.size<<endl;
     int rand_req_time = 1 + rand() % 10;
     for(int clock_cycle = 0; clock_cycle < time_to_run; clock_cycle++){
         myserver.process_requests(clock_cycle);
@@ -43,6 +44,7 @@ void Load_Balancer::allocate_requests(){
         }    
         rand_req_time--; 
     }
+    cout<<"Ending queue size is: "<<myqueue.size<<endl;
 }
 
 

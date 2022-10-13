@@ -49,7 +49,7 @@ string Request::Generate_IP(){
  * @return int a random time
  */
 int Request::generate_time(){
-    int micro_second = rand() % 5 + 1;
+    int micro_second = rand() % 1000 + 1;
     return micro_second;
 }
 

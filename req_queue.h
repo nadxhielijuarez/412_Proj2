@@ -42,6 +42,7 @@ Req_Queue::Req_Queue(){
 Request Req_Queue::pop(){
     Request myReq = requests.front();
     requests.pop();
+    size--;
     return myReq;
 }
 
