@@ -22,7 +22,7 @@ class Web_Server{
     vector<Processor*> server;
     Web_Server(int size);
     Web_Server();
-    void process_requests();
+    void process_requests(int time_processed);
     void take_in_request(Request newRequest, int empty_slot_indx);
     int find_empty_processor();
 
@@ -45,13 +45,14 @@ Web_Server::Web_Server(){
 }
 
 
-void Web_Server::process_requests(){
+void Web_Server::process_requests(int time_processed){
     for(int indx=0; indx<server_size; indx++){
         Processor* cur_process = server[indx];
         if(!cur_process->empty){
-            Request cur_request = cur_process->request_held;
-            cur_request.time--;
-            if(cur_request.time == 0){
+            Request* cur_request = cur_process->request_held;
+            cur_request->time = cur_request->time - 1;
+            if(cur_request->time == 0){
+                cout<<"At clock cycle: "<<time_processed<<" "<< cur_request->output_IP<< " was processed"<<endl;
                 cur_process->empty = true;
             }
         }        
@@ -70,8 +71,7 @@ int Web_Server::find_empty_processor(){
 }
 void Web_Server::take_in_request(Request newRequest, int empty_slot_indx ){
     Processor*cur_processor = server[empty_slot_indx];
-    Request old_Request = cur_processor->request_held;
-    cur_processor->take_in_req(newRequest);
+    cur_processor->take_in_req(&newRequest);
 }
 
 

@@ -27,13 +27,12 @@ Load_Balancer::Load_Balancer(Req_Queue queue, Web_Server server, int time){
 void Load_Balancer::allocate_requests(){
     int rand_req_time = 1 + rand() % 10;
     for(int clock_cycle = 0; clock_cycle < time_to_run; clock_cycle++){
-        myserver.process_requests();
+        myserver.process_requests(clock_cycle);
         int empty_processor = myserver.find_empty_processor();
         if(rand_req_time == 0 || rand_req_time==-1){
             if(!myqueue.empty()){
                     Request newReq = myqueue.requests.front();
                     if(empty_processor != -1 ){
-                        cout<<"At clock cycle: "<<clock_cycle<<" "<< myserver.server[empty_processor]->name << "  processed "<< myserver.server[empty_processor]->request_held.output_IP <<endl;
                         myserver.take_in_request(newReq, empty_processor);
                         myqueue.pop();
                     }

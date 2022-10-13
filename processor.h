@@ -5,13 +5,13 @@
 
 class Processor{
 public:
-    Request request_held;
+    Request* request_held;
     bool empty;
     int name;
     
     Processor();
     Processor(int nname);
-    void take_in_req(Request req);
+    void take_in_req(Request* req);
 };
 
 Processor::Processor(){
@@ -24,7 +24,7 @@ Processor::Processor(int nname){
     empty = true;
 }
 
-void Processor::take_in_req(Request req){
+void Processor::take_in_req(Request* req){
     request_held = req;
     empty = false;
 }
