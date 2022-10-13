@@ -8,18 +8,20 @@ public:
     Request request_held;
     bool empty;
     int name;
-
-    Processor(int newName);
+    
+    Processor();
+    Processor(int nname);
     void take_in_req(Request req);
 };
 
-
-
-Processor::Processor(int newName){
+Processor::Processor(){
     empty = true;
-    Request req("","",0);
-    request_held = req;
     name = -1;
+}
+
+Processor::Processor(int nname){
+    name = nname;
+    empty = true;
 }
 
 void Processor::take_in_req(Request req){

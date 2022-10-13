@@ -26,9 +26,17 @@ int main(){
    Req_Queue myQ(servers);
    Web_Server myServer(servers);
    Load_Balancer myLB(myQ, myServer, lb_time);
+
+//    cout<<"checking server:"<<endl;
+
+//    for(int i = 0; i<servers; i++){
+//     cout<<"renamed?"<<myServer.server[i].name<<endl;
+//    }
+
+
+
    cout<<"\n Beginning to allocate requests"<<endl;
    myLB.allocate_requests();
-   //myLB.decrementing_allocate();
 
 }
 /*

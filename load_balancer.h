@@ -21,23 +21,21 @@ class Load_Balancer{
 Load_Balancer::Load_Balancer(Req_Queue queue, Web_Server server, int time){
     myqueue = queue;
     myserver = server;
+   // cout<<"server of size:" <<server.server_size<<endl;
     time_to_run = time;
 }
 
 void Load_Balancer::allocate_requests(){
-    int indx = 0;
     for(int clock_cycle = 0; clock_cycle < time_to_run; clock_cycle++){
         myserver.process_requests();
-        if(!myqueue.empty()){
-            Request new_request = myqueue.pop();
-            cout<<"At clock cycle "<<clock_cycle;
-            myserver.take_in_Request(new_request);
-        }else{
-            /*should I create a new queue and continue to process that?*/
-            cout<<"All requests processed."<<endl;
-            break;
+        Request myReq;
+        //every 5 or 2 seconds enter a requests
+        if(clock_cycle%5==0){
+            myserver.take_in_request(myReq); 
+        }else if( clock_cycle %2==0){
+            myserver.take_in_request(myReq);
         }
-
+        
     }
 }
 
