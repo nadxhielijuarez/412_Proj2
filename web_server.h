@@ -19,11 +19,9 @@ request inside server just deletes when time is over
 class Web_Server{
     public:
     int server_size;
-    //Request* server;/*should point to the array of that size*/
     vector<Processor*> server;
     Web_Server(int size);
     Web_Server();
-    //int process_requests(Request newRequest,  int max_req_time, int starting_index);
     void process_requests();
     void take_in_request(Request newRequest);
     int get_empty_indx();
@@ -76,13 +74,10 @@ void Web_Server::take_in_request(Request newRequest){
     
     int empty_slot_indx = get_empty_indx();
     if(empty_slot_indx != -1){
-     //   cout<<"Empty slot: "<<empty_slot_indx<<endl;
         Processor*cur_processor = server[empty_slot_indx];
-        //cout<<"old? "<<cur_processor->empty<<endl;
         Request old_Request = cur_processor->request_held;
         cur_processor->take_in_req(newRequest);
-        cout<<"Old: "<<old_Request.input_IP<<" New "<< cur_processor->request_held.input_IP<<endl;
-        //cout<<"Updated? "<<cur_processor->empty<<endl;        
+        cout<<"Old: "<<old_Request.input_IP<<" New "<< cur_processor->request_held.input_IP<<endl; 
     }
 
     

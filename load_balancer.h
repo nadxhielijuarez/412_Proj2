@@ -21,15 +21,13 @@ class Load_Balancer{
 Load_Balancer::Load_Balancer(Req_Queue queue, Web_Server server, int time){
     myqueue = queue;
     myserver = server;
-   // cout<<"server of size:" <<server.server_size<<endl;
     time_to_run = time;
 }
 
 void Load_Balancer::allocate_requests(){
     for(int clock_cycle = 0; clock_cycle < time_to_run; clock_cycle++){
         myserver.process_requests();
-        Request myReq;
-        //every 5 or 2 seconds enter a requests
+        Request myReq = myqueue.pop();
         if(clock_cycle%5==0){
             myserver.take_in_request(myReq); 
         }else if( clock_cycle %2==0){
