@@ -18,8 +18,11 @@ public:
 };
 
 /**
- * @brief Might not need it
+ * @brief Construct a new Req_Queue::Req_Queue object
+ * creates a queue of type request pointers, request*. The queue then gets populated with 2*(number of servers) requests. Making use of dynamic memory ensures that variables are
+ * updated as expected.
  * 
+ * @param servers - an integer
  */
 Req_Queue::Req_Queue(int servers){
     int find_max_time = -1;
@@ -34,18 +37,31 @@ Req_Queue::Req_Queue(int servers){
     max_time = find_max_time;
 }
 
+/**
+ * @brief Construct a new Req_Queue::Req_Queue object this is a default constructor that creates an empty queue of size 0
+ * 
+ */
 Req_Queue::Req_Queue(){
     max_time = -1;
     size = 0;
 }
 
+/**
+ * @brief This pop function pops off elements from the underlying queue, returns the element that was just deleted, and decrements the size of our queue.
+ * 
+ * @return Request* 
+ */
 Request* Req_Queue::pop(){
     Request* myReq = requests.front();
     requests.pop();
     size--;
     return myReq;
 }
-
+/**
+ * @brief This is just a re-iteration of the underlying queue's empty, its easier to read and work with
+ * 
+ * @return bool 
+ */
 bool Req_Queue::empty(){
     return requests.empty();
 }

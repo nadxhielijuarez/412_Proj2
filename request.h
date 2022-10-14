@@ -65,11 +65,6 @@ Request::Request(){
     time = generate_time();
 };
 
-Request::Request(string in_IP, string out_IP, int time){
-    input_IP = "";
-    output_IP = "";
-    time = -1;
-}
 
 
 
